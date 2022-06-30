@@ -1,5 +1,6 @@
 <?php
-
+/*$numMes = $_POST['FiltarMes'];
+echo $numMes;*/
 //******NUEVO REPORTE
 include_once 'db.php';
 class Reportes extends DB {
@@ -65,6 +66,38 @@ class Reportes extends DB {
 		$query->execute();
 		return $query->fetchAll(PDO::FETCH_ASSOC);
 	}
+
+
+/*	public function listarInformeMensual($numMes){
+
+		$query = $this->connect()->prepare(' select * from reportes where MONTH(fecha) = :numMes');
+			$query->execute(['fecha' => $numMes]);
+
+			echo 'consulta finalizada';
+
+			echo '<script type="text/javascript">
+						alert("Datos actualizados con éxito");
+						window.location.href="../admin/mensual.php";
+						</script>';
+}*/
+
+public function listarInformeMensual(){
+
+	$query = $this->connect()->prepare(' select * from reportes where MONTH(fecha) = 3');
+		$query->execute();
+	return $query->fetchAll(PDO::FETCH_ASSOC);
+}
+
+
+	/*public function eliminar($codigo){
+			$query = $this->connect()->prepare('DELETE FROM estudiante WHERE curp = :user');
+			$query->execute(['user' => $codigo]);
+		}*/
+
+
+
+
+
 
 /*	public function consultarEstudiante($codigo){
 		$query = $this->connect()->prepare('select estudiante.curp, estudiante.nombre as estudiantenom, estudiante.apellidos as estudianteapell, estudiante.carrera, estudiante.grado, estudiante.grupo, taller.id, taller.nombre as tallernom, reporte.clave as reporteclave, reporte.titulo, reporte.descripcion, instructor.nombre as nombreinst, instructor.apellidos as apellidosinst, instructor.email as emailist, instructor.telefono as telefonoinst, docente_supervisor.nombre as supervisornom, docente_supervisor.apellidos as supervisorapell, docente_supervisor.email as supervisormail, docente_supervisor.telefono as supervisortel

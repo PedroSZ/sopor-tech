@@ -34,3 +34,33 @@ function countChars(obj){
         document.getElementById("charNum").innerHTML = 'aún puedes escribir '+ charRemain + ' letras.';
     }
 }
+//AQUI INICIA LA VALIDACION DE LOS CAMPOS DEL FORMULARIO
+function validar(){
+	var txtDepartamento = document.getElementById("departamento").value;
+	var txtNombre = document.getElementById("nombre").value;
+	var txtFallas = document.getElementById("fallas").value;
+	var txtDescripcion = document.getElementById("charNum").value;
+
+
+	if (txtDepartamento == null || txtDepartamento.length == 0 ){
+      	alert("Tiene que elegir un Departamento");
+      	document.getElementById('departamento').focus();
+      	return false;
+   	}
+   	if (txtNombre == null || txtNombre.length == 0 ){
+      	alert("Tiene que escribir un nombre");
+      	document.getElementById('nombre').focus();
+      	return false;
+   	}
+   	if (txtFallas == null || txtFallas.length == 0 ){
+      	alert("Por favor indica un tipo de reporte");
+      	document.getElementById('fallas').focus();
+      	return false;
+   	}
+		if (txtDescripcion == null || txtDescripcion.length == 0 ){
+			alert("Por favor escriba una breve descripcion del problema que presenta");
+			document.getElementById('charNum').focus();
+			return false;
+		}
+
+}
