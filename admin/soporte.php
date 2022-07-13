@@ -22,7 +22,7 @@
               }
    </script>
 
-
+<script src="scripts/notifications.js"></script>
   </head>
   <body>
 <!--START NAVBAR-->

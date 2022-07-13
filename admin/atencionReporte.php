@@ -94,7 +94,7 @@ echo'
 <div class="mb-3">
   <label for="formGroupExampleInput2" class="form-label" id="charNum" name="solucion">Breve descripcion la solucion.</label>
 
-<input type="text" value="'.$mirep["solucion"].'" class="form-control" id="solucion" name="solucion" >
+<input type="text" value="" class="form-control" id="solucion" name="solucion" placeholder="Que solucion dio al problema?" >
 </div>
 
 ';?>

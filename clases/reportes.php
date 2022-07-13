@@ -1,6 +1,6 @@
 <?php
-/*$numMes = $_POST['FiltarMes'];
-echo $numMes;*/
+$mes = $_POST['FiltarMes'];
+echo $mes;
 //******NUEVO REPORTE
 include_once 'db.php';
 class Reportes extends DB {
@@ -67,26 +67,18 @@ class Reportes extends DB {
 		return $query->fetchAll(PDO::FETCH_ASSOC);
 	}
 
+	public function listarInformeMensual($mes){
+		$query = $this->connect()->prepare('SELECT * FROM reportes WHERE MONTH(fecha) = :FiltarMes');
+		$query->execute(['FiltarMes' => $mes]);
+		return $query->fetch(PDO::FETCH_ASSOC);
+	}
 
-/*	public function listarInformeMensual($numMes){
+/*public function listarInformeMensual(){
 
-		$query = $this->connect()->prepare(' select * from reportes where MONTH(fecha) = :numMes');
-			$query->execute(['fecha' => $numMes]);
-
-			echo 'consulta finalizada';
-
-			echo '<script type="text/javascript">
-						alert("Datos actualizados con éxito");
-						window.location.href="../admin/mensual.php";
-						</script>';
-}*/
-
-public function listarInformeMensual(){
-
-	$query = $this->connect()->prepare(' select * from reportes where MONTH(fecha) = 3');
+	$query = $this->connect()->prepare(' select * from reportes where MONTH(fecha) = 5 ORDER BY fecha ASC');
 		$query->execute();
 	return $query->fetchAll(PDO::FETCH_ASSOC);
-}
+}*/
 
 
 	/*public function eliminar($codigo){

@@ -127,7 +127,7 @@
 
 	<div class="mb-3">
   <label for="formGroupExampleInput" class="form-label">Nombre</label>
-  <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Escribe tu nombre" onKeyUp="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()">
+   <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Escribe tu nombre" onKeyUp="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()">
 </div>
 
 <div class="mb-3">
@@ -153,7 +153,7 @@
 
 <div class="mb-3">
   <label for="formGroupExampleInput2" class="form-label" id="charNum">Breve descripcion del problema.</label>
-  <textarea rows="3" onkeyup="countChars(this);" maxlength="250"  class="form-control" id="charNum" name="descripcion" placeholder="Ejemplo: Necesito instalar un nuevo equipo para un nuevo compañero y conecarlo a internet necesito 20 metros de cable aprox."></textarea>
+  <textarea rows="3" onkeyup="countChars(this);" maxlength="250"  class="form-control" id="charNum2" name="descripcion" placeholder="Ejemplo: Necesito instalar un nuevo equipo para un nuevo compañero y conecarlo a internet necesito 20 metros de cable aprox."></textarea>
 
 </div>
 

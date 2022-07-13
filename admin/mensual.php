@@ -4,45 +4,10 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="../css/estilo.css" rel="stylesheet" type="text/css">
     <title>Suppor-tech</title>
-
-
-
-    <script language='javascript'>                               <!--script-->
-		function enviaMes() {
-      alert(mesActual);
-      var mensaje;
-      var opcion = confirm("El usuario será eliminado de la base de datos, ¿seguro que desea continuar con esta acción?");
-      if (opcion == true) {
-        document.form_consulta.micodigo.value = mesActual;
-        document.form_consulta.submit();
-          mensaje = "Usuario eliminado con éxito.";
-    } else {
-        mensaje = "No se realizado ninguna acción.";
-    }
-    //document.getElementById("ejemplo").innerHTML = mensaje;
-		}
-		/*function regresar(){
-			location.href='index.php'
-		}*/
-    function alerta()
-    {
-    var mensaje;
-    var opcion = confirm("Clicka en Aceptar o Cancelar");
-    if (opcion == true) {
-        mensaje = "Has clickado OK";
-	} else {
-	    mensaje = "Has clickado Cancelar";
-	}
-	document.getElementById("ejemplo").innerHTML = mensaje;
-}
-        </script>
-
-
   </head>
   <body>
 <!--START NAVBAR-->
@@ -59,7 +24,6 @@
 
 <!-- begings form-->
 <div class="datagrid">
-
 <!-- INICIA FORMULARIO PARA FILTRAR INFORMACION -->
   <form method="post" action="mensual.php" name="form_filtro" id="form_filtro" style="align-items: center; background:rgba(0,0,0,0.0);">
                   <table border="0" style="color:#FFFFFF; font-weight: 600; font-size: 17px;">
@@ -81,10 +45,7 @@
                       <option value="10" onselect="enviaMes()">OCTUBRE</option>
                       <option value="11" onselect="enviaMes()">NOBIEMBRE</option>
                       <option value="12" onselect="enviaMes()">DICIEMBRE</option>
-
                      </select>
-
-
                         <br>
                   </td>
                 </tr>
@@ -108,12 +69,9 @@ $numMes = $_POST['FiltarMes'];
 
 
 echo "
-<form method='post' action='../clases/reportes.php' name='frm_consulta' id='form_consulta' style='width: auto; height: auto;'>
+<form method='post' action='mensual.php' name='frm_consulta' id='form_consulta' style='width: auto; height: auto;'>
  <input type='text' id='mesActual' name'mesActual' value='$numMes'>
 ";
-
-
-
 
 
 

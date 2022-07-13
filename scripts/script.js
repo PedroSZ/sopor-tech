@@ -39,7 +39,7 @@ function validar(){
 	var txtDepartamento = document.getElementById("departamento").value;
 	var txtNombre = document.getElementById("nombre").value;
 	var txtFallas = document.getElementById("fallas").value;
-	var txtDescripcion = document.getElementById("charNum").value;
+	var txtDescripcion = document.getElementById("charNum2").value;
 
 
 	if (txtDepartamento == null || txtDepartamento.length == 0 ){
@@ -59,7 +59,7 @@ function validar(){
    	}
 		if (txtDescripcion == null || txtDescripcion.length == 0 ){
 			alert("Por favor escriba una breve descripcion del problema que presenta");
-			document.getElementById('charNum').focus();
+			document.getElementById('charNum2').focus();
 			return false;
 		}
 
