@@ -7,22 +7,23 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-
+<link href="css/estilo.css" rel="stylesheet" type="text/css">
     <script src="scripts/script.js"></script>
-
     <title>Suppor-tech</title>
   </head>
   <body>
 <!--START NAVBAR-->
-		<nav class="navbar navbar-dark bg-dark">
-	  <div class="container-fluid">
-	    <a class="navbar-brand" href="#">
-	      <img src="images/logotipo.png" alt="" width="50" height="50" class="d-inline-block align-text-top">
-	      Departamento de Informática.
-	    </a>
-	  </div>
-	</nav>
+<nav class="navbar" style="height: 300px">
+<div class="container-fluid">
+  <a class="navbar-brand" href="#" style="color:#FFFFFF";>
+    <img src="images/logotipo.png" alt="" width="250" height="250" align="left">
+    <br><br><FONT SIZE=7>GOBIERNO DE AMECA</font>
+        <br><FONT SIZE=6>2022 - 2024.</font>
+    <br><FONT SIZE=6>Departamento de Informática.</font>
+
+  </a>
+</div>
+</nav>
 <!-- ENDS NAVBAR-->
 
 
@@ -32,7 +33,7 @@
 	<div>
 	 <label for="inputState" class="form-label">Departamento</label>
 	 <select id="departamento" name="departamento"class="form-select">
-     <option value="">Departamento</option>
+     <option value="">Elija un Departamento</option>
      <option disabled>A____</option>
      <option>ARCHIVO MUNICIPAL</option>
      <option>ASEO PUBLICO</option>
@@ -139,6 +140,7 @@
  <select id="fallas" class="form-select"  name="falla_de_equipo" onchange="getComboA(this)">
    <option value="">Seleccione</option>
    <option>PROBLEMAS DE INTERNET</option>
+   <option>PROBLEMAS CON EQUIPO DE COMPUTO</option>
    <option>PROBLEMAS DE IMPRESION</option>
     <option>PROBLEMAS DE MONITOR</option>
     <option>PROBLEMAS OFFICE</option>
@@ -178,9 +180,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     -->
 <table>
-<tr>cell 1</tr>
-<tr>cell 2</tr>
-<caption>A table</caption>
+<tr></tr>
+<tr></tr>
+<caption></caption>
 </table>
 
   </body>

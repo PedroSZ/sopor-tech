@@ -1,6 +1,7 @@
 <?php
 error_reporting(0);//para que no me muestre errores porque en un principio FiltarCurp no tiene valor por o esta indefinida
-$filtro1 = $_POST['FiltrarMes'];
+$filtro1 = $_POST['fechainicial'];
+$filtro2 = $filtro1 + 2;
 
 ?>
 
@@ -16,11 +17,14 @@ $filtro1 = $_POST['FiltrarMes'];
     <title>Suppor-tech</title>
 <script src="../scripts/exportarxml.js"></script>
     <script language='javascript'>
-		function consultar(mes) {
-            document.frm_consulta.mimes.value = mes;
+		function consultar(mesI, mesF) {
+            document.frm_consulta.mimesI.value = mesI;
+            document.frm_consulta.mimesF.value = mesF;
 			//alert(codigo);
             document.frm_consulta.submit();
 		}
+
+
         </script>
   </head>
   <body>
@@ -32,26 +36,18 @@ $filtro1 = $_POST['FiltrarMes'];
 <!-- begings form-->
 <div class="datagrid">
 <!-- INICIA FORMULARIO PARA FILTRAR INFORMACION -->
-  <form method="post" action="mensual.php" name="form_filtro" id="form_filtro" style="align-items: center; background:rgba(0,0,0,0.0);">
+  <form method="post" action="trimestral.php" name="form_filtro" id="form_filtro" style="align-items: center; background:rgba(0,0,0,0.0);">
   <table border="0" style="color:#FFFFFF; font-weight: 600; font-size: 17px;">
 <?php
 echo"
 <tr>
   <td width='50%' style='text-align: right;'>
-    <select name='FiltrarMes' onchange='this.form.submit()' type='text' id ='FiltrarMes' style='height:30px;	width:auto; font-weight: 600; font-size: 14px; border-radius: 10px 10px 10px 10px;'>
+    <select name='fechainicial' onchange='this.form.submit()' type='text' id ='FiltrarMes' style='height:30px;	width:auto; font-weight: 600; font-size: 14px; border-radius: 10px 10px 10px 10px;'>
       <option disabled selected>Mes</option>
-      <option value='1'>ENERO</option>
-      <option value='2'>FEBRERO</option>
-      <option value='3'>MARZO</option>
-      <option value='4'>ABRIL</option>
-      <option value='5'>MAYO</option>
-      <option value='6'>JUNIO</option>
-      <option value='7'>JULIO</option>
-      <option value='8'>AGOSTO</option>
-      <option value='9'>SEPTIEMBRE</option>
-      <option value='10'>OCTUBRE</option>
-      <option value='11'>NOBIEMBRE</option>
-      <option value='12'>DICIEMBRE</option>
+      <option value='1'>ENERO - MARZO</option>
+      <option value='4'>ABRIL - JUNIO</option>
+      <option value='7'>JULIO - SEPTIEMBRE</option>
+      <option value='10'>OCTUBRE - DICIEMBRE</option>
      </select>
         <br>
   </td>
@@ -64,7 +60,8 @@ echo"
     <?php
 echo "
 <form method='post' action='../clases/reportes.php' name='frm_consulta' id='form_consulta' style='width: auto; height: auto;'>
- <input type='hidden' id='mimes' name='mimes' value='$filtro1'>";
+ <input type='hidden' id='mimesI' name='mimesI' value='$filtro1'>
+ <input type='hidden' id='mimesF' name='mimesF' value='$filtro2'>";
 
 
 
@@ -72,7 +69,7 @@ echo "
 
 include_once '../clases/reportes.php';
 $rep = new Reportes();
-$reportes = $rep->listarInformeMensual($filtro1);
+$reportes = $rep->listarInformeTrimestral($filtro1, $filtro2);
 if($reportes){
 echo "
 <table>
@@ -82,9 +79,9 @@ echo "
 <th><h4>INFRAESTRUCTURA INFORMÁTICA.</h4></th>
 </tr>
 <tr>
-<th><h4>MES:</h4></th>
+<th><h4>TRIMESTRE:</h4></th>
 <th>  &nbsp &nbsp </th>
-<th><h4><input type='text'></h4></th>
+<th><h4><input type='text'></input></h4></th>
 </tr>
 </table>
 <table id='tableID' class='table table-striped'><thead>

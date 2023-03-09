@@ -1,6 +1,10 @@
 <?php
-$mes = $_POST['FiltarMes'];
-echo $mes;
+error_reporting(0);//para que no me muestre errores porque en un principio FiltarCurp no tiene valor por o esta indefinida
+$mes = $_POST['FiltrarMes'];
+$inicio = $_POST['fechainicial'];
+$fin = $inicio + 2;
+/*echo $inicio;
+echo $fin;*/
 //******NUEVO REPORTE
 include_once 'db.php';
 class Reportes extends DB {
@@ -67,26 +71,24 @@ class Reportes extends DB {
 		return $query->fetchAll(PDO::FETCH_ASSOC);
 	}
 
-	public function listarInformeMensual($mes){
-		$query = $this->connect()->prepare('SELECT * FROM reportes WHERE MONTH(fecha) = :FiltarMes');
-		$query->execute(['FiltarMes' => $mes]);
-		return $query->fetch(PDO::FETCH_ASSOC);
-	}
 
-/*public function listarInformeMensual(){
 
-	$query = $this->connect()->prepare(' select * from reportes where MONTH(fecha) = 5 ORDER BY fecha ASC');
-		$query->execute();
+public function listarInformeMensual($mes){
+
+	$query = $this->connect()->prepare('select * from reportes where MONTH(fecha) = :fe ORDER BY fecha ASC');
+			$query->execute(['fe' => $mes]);
 	return $query->fetchAll(PDO::FETCH_ASSOC);
-}*/
+}
 
+public function listarInformeTrimestral($inicio, $fin){
 
-	/*public function eliminar($codigo){
-			$query = $this->connect()->prepare('DELETE FROM estudiante WHERE curp = :user');
-			$query->execute(['user' => $codigo]);
-		}*/
-
-
+	$query = $this->connect()->prepare('select * from reportes where MONTH(fecha) BETWEEN :ini and :fi ORDER BY fecha ASC');
+			$query->execute([
+				'ini' => $inicio,
+			'fi' => $fin
+		]);
+	return $query->fetchAll(PDO::FETCH_ASSOC);
+}
 
 
 

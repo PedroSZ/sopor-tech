@@ -8,20 +8,8 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="../css/estilo.css" rel="stylesheet" type="text/css">
+    <script src="../scripts/exportarxml.js"></script>
     <title>Suppor-tech</title>
-
-
-    <script language='javascript'>
-    /*  function consultar(mes) {
-            document.form_filtro.FiltarMes.value = mes;
-      //alert(codigo);
-            document.form_filtro.submit();
-          }
-            function regresar(){
-                location.href='../atencionReporte.php'
-              }*/
-   </script>
-
 
   </head>
   <body>
@@ -40,7 +28,7 @@
 <!-- begings form-->
 <div class="datagrid">
  <input type="button" class="btn btn-primary" onClick="location='mensual.php'" value="Informe Mensual" />
-  <input type="button" class="btn btn-primary" onClick="location=''" value="Informe Trimestral" />
+  <input type="button" class="btn btn-primary" onClick="location='trimestral.php'" value="Informe Trimestral" />
 <!-- INICIA FORMULARIO PARA FILTRAR INFORMACION -->
   <form method="post" action="informes.php" name="form_filtro" id="form_filtro" style="align-items: center; background:rgba(0,0,0,0.0);">
                   <table border="0" style="color:#FFFFFF; font-weight: 600; font-size: 17px;">
@@ -50,26 +38,9 @@
 
                     <input name="FiltarId" type="text"  placeholder="Buscar por id" id ="FiltarId" onKeyUp="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()" style="height:30px;	width:150px; font-weight: 600; font-size: 14px; border-radius: 10px 10px 10px 10px;">
 
-                    <select name="FiltarMes" type="text" id ="FiltarMes" style="height:30px;	width:auto; font-weight: 600; font-size: 14px; border-radius: 10px 10px 10px 10px;">
-                      <option disabled selected>Mes</option>
-                      <option value="1">ENERO</option>
-                      <option value="2">FEBRERO</option>
-                      <option value="3">MARZO</option>
-                      <option value="4">ABRIL</option>
-                      <option value="5">MAYO</option>
-                      <option value="6">JUNIO</option>
-                      <option value="7">JULIO</option>
-                      <option value="8">AGOSTO</option>
-                      <option value="9">SEPTIEMBRE</option>
-                      <option value="10">OCTUBRE</option>
-                      <option value="11">NOBIEMBRE</option>
-                      <option value="12">DICIEMBRE</option>
-
-                     </select>
-
                     <input name="FiltarNombre" type="text" title="Busqueda por nombre ejemplo: Pedro" placeholder="Buscar por nombre" id ="FiltarNombre"  style="height:30px;	width:150px; font-weight: 600; font-size: 14px; border-radius: 10px 10px 10px 10px;">
 
-                    <select name="FiltarTipo" type="text" id ="FiltarTipo" style="height:30px;	width:auto; font-weight: 600; font-size: 14px; border-radius: 10px 10px 10px 10px;">
+                    <select name="FiltarTipo" onchange="this.submit" type="text" id ="FiltarTipo" style="height:30px;	width:auto; font-weight: 600; font-size: 14px; border-radius: 10px 10px 10px 10px;">
                       <option disabled selected>Tipo reporte</option>
                       <option value="PROBLEMAS DE INTERNET">PROBLEMAS DE INTERNET</option>
                       <option>PROBLEMAS DE IMPRESION</option>
@@ -81,12 +52,13 @@
                        <option>OTRO</option>
                      </select>
 
-                    <select name="FiltarDepartamento" type="text" id ="FiltarDepartamento" style="height:30px;	width:auto; font-weight: 600; font-size: 14px; border-radius: 10px 10px 10px 10px;">
+                    <select name="FiltarDepartamento" onchange="this.submit" type="text" id ="FiltarDepartamento" style="height:30px;	width:auto; font-weight: 600; font-size: 14px; border-radius: 10px 10px 10px 10px;">
                       <option disabled selected>Departamento</option>
                       <option disabled>A____</option>
+                      <option>ABASTO Y SUMINISTRO</option>
+                      <option>ALUMRADO PUBLICO</option>
                       <option value="ARCHIVO MUNICIPAL">ARCHIVO MUNICIPAL</option>
                       <option>ASEO PUBLICO</option>
-                      <option>ALUMRADO PUBLICO</option>
                       <option>ATENCION CIUDADANA</option>
                       <option disabled>B____</option>
                       <option disabled>C____</option>
@@ -185,15 +157,15 @@
 
 
 
-<form method="post" action="" name="frm_listReportes" id="frm_listReportes" style="width: auto; height: auto;">
-<!-- <input type="hidden" id="micodigo" name="micodigo"> -->
+<form method="post" action="../clases/reportes.php" name="frm_listReportes" id="frm_listReportes" style="width: auto; height: auto;">
+ <input type="hidden" id="mimes" name="mimes">
     <?php
     error_reporting(0);//para que no me muestre errores
     $filtro1 = $_POST['FiltarId']; //para obtener la curp a buscar del fitro
-    $filtro2 = $_POST['FiltarMes'];
-    $filtro3 = $_POST['FiltarNombre'];
-    $filtro4 = $_POST['FiltarTipo'];
-    $filtro5 = $_POST['FiltarDepartamento'];
+
+    $filtro2 = $_POST['FiltarNombre'];
+    $filtro3 = $_POST['FiltarTipo'];
+    $filtro4 = $_POST['FiltarDepartamento'];
 /*echo $filtro1;
 echo $filtro2;
 echo $filtro3;
@@ -208,9 +180,9 @@ if($reportes){
 echo "
 <table>
 <tr>
-<th><h4>DEPARTAMENTO:</h4></th>
+<th><h4>PRODUCCION:</h4></th>
 <th>  &nbsp &nbsp</th>
-<th><h4>INFRAESTRUCTURA INFORMÁTICA.</h4></th>
+<th><h4>PRODUCCION.</h4></th>
 </tr>
 <tr>
 <th><h4>MES:</h4></th>
@@ -218,17 +190,17 @@ echo "
 <th><h4>AQUÍ VA EL MES</h4></th>
 </tr>
 </table>
-<table class='table table-striped'><thead>
+<table id='tableID' class='table table-striped'><thead>
 <tr>
 <th>Fecha</th>
 <th>Departamento</th>
 <th>Servicio que se brindo</th>
 </tr>
 </thead>";
-if($filtro1 || $filtro2 || $filtro3 || $filtro4 || $filtro5){
+if($filtro1 || $filtro2 || $filtro3 || $filtro4){
         foreach ($reportes as $reporte) {
         //  if($filtro1 == $alumno['curp'] || $filtro2 == $alumno['nombre'] || $filtro3 == $alumno['apellidos']){
-          if($filtro1 == $reporte['id'] || $filtro2 == $reporte['fecha'] || $filtro3 == $reporte['nombre'] || $filtro4 == $reporte['falla_de_equipo'] || $filtro5 == $reporte['departamento']){
+          if($filtro1 == $reporte['id'] || $filtro2 == $reporte['nombre'] || $filtro3 == $reporte['falla_de_equipo'] || $filtro4 == $reporte['departamento']){
             echo "<tr>
             <td>".$reporte['fecha']."</td>
             <td>".$reporte['departamento']."</td>
@@ -265,7 +237,7 @@ echo " <p>No hay reportes nuevos por atender.</p>";
 <div class="col-12">
 
    <input type="button" class="btn btn-primary" onClick="location=''" value="Imprimir" />
-
+   <button class="btn btn-primary" onclick="exportTableToExcel('tableID')">Descargar para excel</button>
  </div>
 </article>
 </section>
